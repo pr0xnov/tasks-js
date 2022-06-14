@@ -11,11 +11,15 @@
     <div class="container">
       <form>
         <p id="errorMessage"></p>
-        <label for="inputFile"
-          ><img class="default-img" src="./img/default-avatar.png" alt="avatar"
-        /></label>
+        <label class="labelUploader" for="inputFile"
+          ><img
+            class="defaultImg"
+            src="./img/default-avatar.png"
+            alt="avatar"
+          />
+          <img id="preview" />
+        </label>
         <input type="file" id="inputFile" />
-        <img id="preview" />
       </form>
     </div>
     <script src="./index.js"></script>
