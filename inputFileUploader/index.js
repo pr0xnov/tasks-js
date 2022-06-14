@@ -3,10 +3,11 @@ const errorMessage = document.getElementById("errorMessage");
 const imagePreview = document.getElementById("preview");
 
 inputFile.addEventListener("change", () => {
-  const files = document.querySelector("input[type=file]").files[0];
-  if (files != inputFile) {
-    return previewImage(files);
+  const file = document.querySelector("input[type=file]").files[0];
+  if (!file) {
+    return;
   }
+  previewImage(file);
 });
 
 function previewImage(file) {
@@ -21,13 +22,11 @@ function previewImage(file) {
     imagePreview.src = reader.result;
   });
 
-  if (file) {
-    if (isImageJpeg || isImageJpg || isImageGif || isImagePng) {
-      reader.readAsDataURL(file);
-      errorMessage.innerText = "";
-    } else {
-      errorMessage.innerText = "File type should be an image";
-      imagePreview.src = "";
-    }
+  if (isImageJpeg || isImageJpg || isImageGif || isImagePng) {
+    reader.readAsDataURL(file);
+    errorMessage.innerText = "";
+  } else {
+    errorMessage.innerText = "File type should be an image";
+    imagePreview.src = "";
   }
 }

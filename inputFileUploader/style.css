@@ -9,10 +9,11 @@
   transform: translate(-50%, -50%);
 }
 
-img {
+.default-img {
   margin-top: 20px;
   width: 200px;
-  height: auto;
+  border-radius: 50%;
+  height: 200px;
 }
 
 #errorMessage {
