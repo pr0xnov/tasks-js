@@ -1,41 +1,33 @@
-const img = document.getElementById("imgInp");
-let errorMessage = document.getElementById("errorMessage");
-
+const inputFile = document.getElementById("inputFile");
+const errorMessage = document.getElementById("errorMessage");
 const imagePreview = document.getElementById("preview");
-img.addEventListener("change", (e) => {
-  const imgDetails = document.querySelector("input[type=file]").files[0];
-  if (imgDetails) {
-    previewImage(imgDetails);
-  } else {
-    imagePreview.src = "";
-    errorMessage.innerText = "Please select a picture";
+
+inputFile.addEventListener("change", () => {
+  const files = document.querySelector("input[type=file]").files[0];
+  if (files != inputFile) {
+    return previewImage(files);
   }
 });
 
-function previewImage(imgD) {
+function previewImage(file) {
   const reader = new FileReader();
+  const isImageJpeg = file.type === "image/jpeg";
+  const isImageJpg = file.type === "image/jpg";
+  const isImageGif = file.type === "image/gif";
+  const isImagePng = file.type === "image/png";
 
   // PREVIEW
   reader.addEventListener("load", function () {
     imagePreview.src = reader.result;
   });
 
-  if (imgD) {
-    if (
-      imgD.type === "image/jpeg" ||
-      imgD.type == "image/jpg" ||
-      imgD.type == "image/gif" ||
-      imgD.type == "image/png"
-    ) {
+  if (file) {
+    if (isImageJpeg || isImageJpg || isImageGif || isImagePng) {
+      reader.readAsDataURL(file);
       errorMessage.innerText = "";
-
-      reader.readAsDataURL(imgD);
     } else {
       errorMessage.innerText = "File type should be an image";
       imagePreview.src = "";
     }
-  } else {
-    imagePreview.src = "";
-    errorMessage.innerText = "Please select a picture";
   }
 }
