@@ -14,8 +14,11 @@
   width: 200px;
   border-radius: 50%;
   height: 200px;
+  cursor: pointer;
 }
-
+#inputFile {
+  display: none;
+}
 #errorMessage {
   color: red;
   margin-bottom: 20px;
