@@ -26,6 +26,6 @@ function previewImage(file) {
     errorMessage.innerText = "";
   } else {
     errorMessage.innerText = "File type should be an image";
-    imagePreview.src = "";
+    imagePreview.src = "./img/default-avatar.png";
   }
 }
