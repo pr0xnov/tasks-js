@@ -37,3 +37,7 @@
   color: red;
   margin-bottom: 20px;
 }
+
+[hide] {
+  display: none;
+}

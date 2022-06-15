@@ -1,6 +1,7 @@
 const inputFile = document.getElementById("inputFile");
 const errorMessage = document.getElementById("errorMessage");
 const imagePreview = document.getElementById("preview");
+const imageDefault = document.getElementById("defaultImg");
 
 inputFile.addEventListener("change", () => {
   const file = document.querySelector("input[type=file]").files[0];
@@ -16,7 +17,7 @@ function previewImage(file) {
   const isImageJpg = file.type === "image/jpg";
   const isImageGif = file.type === "image/gif";
   const isImagePng = file.type === "image/png";
-
+  const hideDefaultImg = imageDefault.setAttribute("hide", "hide");
   // PREVIEW
   reader.addEventListener("load", function () {
     imagePreview.src = reader.result;
@@ -29,4 +30,5 @@ function previewImage(file) {
     errorMessage.innerText = "File type should be an image";
     imagePreview.src = "";
   }
+  hideDefaultImg;
 }
